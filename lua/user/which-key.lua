@@ -96,7 +96,6 @@ local mappings = {
   -- e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   v = { "<cmd>vsplit<cr>", "vsplit" },
   h = { "<cmd>split<cr>", "split" },
-  w = { "<cmd>w<CR>", "Write" },
   -- h = { "<cmd>nohlsearch<CR>", "No HL" },
   -- q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
   ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
