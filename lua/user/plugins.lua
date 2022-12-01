@@ -41,6 +41,12 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("Yazeed1s/minimal.nvim")
+	use("chriskempson/base16-vim")
+	use("sainnhe/everforest")
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
