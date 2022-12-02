@@ -1,10 +1,28 @@
+-- +-------------------------------------------------+
+-- | A | B | C                             X | Y | Z |
+-- +-------------------------------------------------+
+-- insert -> insert mode, normal -> normal mode, visual -> visual mode
+local custom_16 = require("lualine.themes.base16")
+-- Change the background of lualine_c section for normal mode
+custom_16.normal.c.bg = "#1A191E"
+custom_16.normal.b.bg = "#1A191E"
+--custom_16.normal.a.bg = '#8BB8D0'
+custom_16.normal.c.fg = "#695F69"
+custom_16.normal.b.fg = "#695F69"
+custom_16.insert.b.fg = "#695F69"
+custom_16.insert.b.bg = "#1A191E"
+custom_16.visual.b.bg = "#1A191E"
+custom_16.insert.b.fg = "#695F69"
+custom_16.visual.b.fg = "#695F69"
+custom_16.insert.a.bg = "#A896BE"
+
 require("lualine").setup({
 
 	options = {
 		icons_enabled = true,
-		theme = "everforest",
+		theme = custom_16,
 		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		section_separators = { left = " ", right = " " },
 		disabled_filetypes = {
 			statusline = {},
 			winbar = {},
