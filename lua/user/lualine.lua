@@ -20,9 +20,12 @@ require("lualine").setup({
 
 	options = {
 		icons_enabled = true,
-		theme = custom_16,
+		-- theme = custom_16,
+		-- thene = "everforest",
+		theme = "gruvbox",
+		-- theme = "base16",
 		component_separators = { left = "", right = "" },
-		section_separators = { left = " ", right = " " },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = {
 			statusline = {},
 			winbar = {},

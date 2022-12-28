@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/SchemaStore.nvim",
     url = "https://github.com/b0o/SchemaStore.nvim"
   },
+  ["Spacegray.vim"] = {
+    loaded = true,
+    path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/Spacegray.vim",
+    url = "https://github.com/ackyshake/Spacegray.vim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -129,10 +134,10 @@ _G.packer_plugins = {
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-tabnine"] = {
+  everforest = {
     loaded = true,
-    path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
-    url = "https://github.com/tzachar/cmp-tabnine"
+    path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -149,6 +154,11 @@ _G.packer_plugins = {
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["gruvbox-material"] = {
+    loaded = true,
+    path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
+  },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
@@ -159,6 +169,11 @@ _G.packer_plugins = {
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["lsp-inlayhints.nvim"] = {
     loaded = true,
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/lsp-inlayhints.nvim",
@@ -168,6 +183,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -194,8 +214,13 @@ _G.packer_plugins = {
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
+  ["nvim-base16"] = {
+    loaded = true,
+    path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/nvim-base16",
+    url = "https://github.com/RRethy/nvim-base16"
+  },
   ["nvim-bqf"] = {
-    config = { "\27LJ\2\n�\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0005\4\5\0=\4\6\3=\3\a\0025\3\b\0=\3\t\0025\3\15\0005\4\v\0005\5\n\0=\5\f\0045\5\r\0=\5\14\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\vfilter\bfzf\1\0\0\15extra_opts\1\5\0\0\v--bind\22ctrl-o:toggle-all\r--prompt\a> \15action_for\1\0\0\1\0\1\vctrl-s\nsplit\rfunc_map\1\0\3\14stoggleup\5\vvsplit\5\16ptogglemode\az,\fpreview\17border_chars\1\n\0\0\b┃\b┃\b━\b━\b┏\b┓\b┗\b┛\b█\1\0\3\17delay_syntax\3P\16win_vheight\3\f\15win_height\3\f\1\0\1\16auto_enable\2\nsetup\bbqf\frequire\0" },
+    config = { "\27LJ\2\n�\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0005\4\5\0=\4\6\3=\3\a\0025\3\b\0=\3\t\0025\3\15\0005\4\v\0005\5\n\0=\5\f\0045\5\r\0=\5\14\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\vfilter\bfzf\1\0\0\15extra_opts\1\5\0\0\v--bind\22ctrl-o:toggle-all\r--prompt\a> \15action_for\1\0\0\1\0\2\6q\tquit\vctrl-s\nsplit\rfunc_map\1\0\3\14stoggleup\5\16ptogglemode\az,\vvsplit\5\fpreview\17border_chars\1\n\0\0\b┃\b┃\b━\b━\b┏\b┓\b┗\b┛\b█\1\0\3\17delay_syntax\3P\16win_vheight\3\f\15win_height\3\f\1\0\1\16auto_enable\2\nsetup\bbqf\frequire\0" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
@@ -228,11 +253,6 @@ _G.packer_plugins = {
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
   },
-  ["nvim-toggler"] = {
-    loaded = true,
-    path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/nvim-toggler",
-    url = "https://github.com/nguyenvukhang/nvim-toggler"
-  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -261,7 +281,7 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/nvim-tree/nvim-web-devicons"
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["oh-lucy.nvim"] = {
     loaded = true,
@@ -284,7 +304,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["rust-tools.nvim"] = {
-    config = { "\27LJ\2\n�\5\0\0\n\0\31\00046\0\0\0'\2\1\0B\0\2\0029\1\2\0'\3\3\0B\1\2\0036\3\0\0'\5\4\0B\3\2\0029\3\5\0035\5\t\0005\6\6\0005\a\a\0=\a\b\6=\6\n\0055\6\r\0009\a\v\0029\a\f\a=\a\f\0066\a\0\0'\t\14\0B\a\2\0029\a\15\a=\a\16\0066\a\0\0'\t\14\0B\a\2\0029\a\17\a=\a\18\6=\6\19\0055\6\28\0004\a\t\0005\b\20\0>\b\1\a5\b\21\0>\b\2\a5\b\22\0>\b\3\a5\b\23\0>\b\4\a5\b\24\0>\b\5\a5\b\25\0>\b\6\a5\b\26\0>\b\a\a5\b\27\0>\b\b\a=\a\29\6=\6\30\5B\3\2\1K\0\1\0\18hover_actions\vborder\1\0\1\15auto_focus\1\1\3\0\0\b│\16FloatBorder\1\3\0\0\b╰\16FloatBorder\1\3\0\0\b─\16FloatBorder\1\3\0\0\b╯\16FloatBorder\1\3\0\0\b│\16FloatBorder\1\3\0\0\b╮\16FloatBorder\1\3\0\0\b─\16FloatBorder\1\3\0\0\b╭\16FloatBorder\vserver\fon_init\19common_on_init\14on_attach\21common_on_attach\rlvim.lsp\1\0\0\fcmd_env\21_default_options\ntools\1\0\0\14runnables\1\0\1\18use_telescope\2\1\0\2\17autoSetHints\2\23hover_with_actions\2\nsetup\15rust-tools\18rust_analyzer\15get_server\31nvim-lsp-installer.servers\frequire\0" },
+    config = { "\27LJ\2\n�\5\0\0\n\0\31\00046\0\0\0'\2\1\0B\0\2\0029\1\2\0'\3\3\0B\1\2\0036\3\0\0'\5\4\0B\3\2\0029\3\5\0035\5\t\0005\6\6\0005\a\a\0=\a\b\6=\6\n\0055\6\r\0009\a\v\0029\a\f\a=\a\f\0066\a\0\0'\t\14\0B\a\2\0029\a\15\a=\a\16\0066\a\0\0'\t\14\0B\a\2\0029\a\17\a=\a\18\6=\6\19\0055\6\28\0004\a\t\0005\b\20\0>\b\1\a5\b\21\0>\b\2\a5\b\22\0>\b\3\a5\b\23\0>\b\4\a5\b\24\0>\b\5\a5\b\25\0>\b\6\a5\b\26\0>\b\a\a5\b\27\0>\b\b\a=\a\29\6=\6\30\5B\3\2\1K\0\1\0\18hover_actions\vborder\1\0\1\15auto_focus\1\1\3\0\0\b│\16FloatBorder\1\3\0\0\b╰\16FloatBorder\1\3\0\0\b─\16FloatBorder\1\3\0\0\b╯\16FloatBorder\1\3\0\0\b│\16FloatBorder\1\3\0\0\b╮\16FloatBorder\1\3\0\0\b─\16FloatBorder\1\3\0\0\b╭\16FloatBorder\vserver\fon_init\19common_on_init\14on_attach\21common_on_attach\rnvim.lsp\1\0\0\fcmd_env\21_default_options\ntools\1\0\0\14runnables\1\0\1\18use_telescope\2\1\0\2\23hover_with_actions\2\17autoSetHints\2\nsetup\15rust-tools\18rust_analyzer\15get_server\31nvim-lsp-installer.servers\frequire\0" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
@@ -302,6 +322,7 @@ _G.packer_plugins = {
     url = "https://github.com/abecodes/tabout.nvim"
   },
   ["telescope.nvim"] = {
+    config = { "\27LJ\2\nL\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\flazygit\19load_extension\14telescope\frequire\0" },
     loaded = true,
     path = "/Users/yazeed_1/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
@@ -324,6 +345,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\nL\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\flazygit\19load_extension\14telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")

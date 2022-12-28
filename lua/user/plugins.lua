@@ -41,8 +41,12 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("Yazeed1s/minimal.nvim")
-	use("chriskempson/base16-vim")
+	-- use("chriskempson/base16-vim")
+	use("RRethy/nvim-base16")
 	use("sainnhe/everforest")
+	use("sainnhe/gruvbox-material")
+	use("kyazdani42/nvim-web-devicons")
+	use("ackyshake/Spacegray.vim")
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -64,8 +68,8 @@ return packer.startup(function(use)
 				tools = { autoSetHints = true, hover_with_actions = true, runnables = { use_telescope = true } },
 				server = {
 					cmd_env = requested_server._default_options.cmd_env,
-					on_attach = require("lvim.lsp").common_on_attach,
-					on_init = require("lvim.lsp").common_on_init,
+					on_attach = require("nvim.lsp").common_on_attach,
+					on_init = require("nvim.lsp").common_on_init,
 				},
 				-- options same as lsp hover / vim.lsp.util.open_floating_preview()
 				hover_actions = {
@@ -89,16 +93,16 @@ return packer.startup(function(use)
 		end,
 		ft = { "rust", "rs" },
 	})
-	use({
-		"nguyenvukhang/nvim-toggler",
-		require("nvim-toggler").setup({
-			-- your own inverses
-			inverses = { ["true"] = "false", ["false"] = "true", ["!="] = "==", ["=="] = "!=" },
-			-- removes the default <leader>i keymap
-			-- vim.keymap.set({ 'n', 'v' }, '<leader>cl', require('nvim-toggler').toggle)
-			remove_default_keybinds = false,
-		}),
-	})
+	-- use({
+	-- 	"nguyenvukhang/nvim-toggler",
+	-- 	require("nvim-toggler").setup({
+	-- 		-- your own inverses
+	-- 		inverses = { ["true"] = "false", ["false"] = "true", ["!="] = "==", ["=="] = "!=" },
+	-- 		-- removes the default <leader>i keymap
+	-- 		-- vim.keymap.set({ "n", "v" }, "cl", require("nvim-toggler").toggle),
+	-- 		remove_default_keybinds = false,
+	-- 	}),
+	-- })
 	use("p00f/clangd_extensions.nvim")
 	-- Comment
 	use("numToStr/Comment.nvim")
@@ -119,7 +123,7 @@ return packer.startup(function(use)
 				func_map = { vsplit = "", ptogglemode = "z,", stoggleup = "" },
 				filter = {
 					fzf = {
-						action_for = { ["ctrl-s"] = "split" },
+						action_for = { ["ctrl-s"] = "split", ["q"] = "quit" },
 						extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
 					},
 				},
@@ -178,6 +182,12 @@ return packer.startup(function(use)
 	use("SmiteshP/nvim-navic")
 	use("simrat39/symbols-outline.nvim")
 	use("b0o/SchemaStore.nvim")
+	-- use({
+	-- 	"goolord/alpha-nvim",
+	-- 	config = function()
+	-- 		require("alpha").setup(require("alpha.themes.startify").config)
+	-- 	end,
+	-- })
 	-- hints
 	use("lvimuser/lsp-inlayhints.nvim")
 	--
@@ -199,7 +209,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-emoji")
 	use("hrsh7th/cmp-nvim-lua")
-	use({ "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e", run = "./install.sh" })
+	-- use({ "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e", run = "./install.sh" })
 
 	-- git
 	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
