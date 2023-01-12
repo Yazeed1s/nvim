@@ -8,7 +8,6 @@ local icons = require("user.icons")
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = icons.ui.Telescope .. " ",
 		selection_caret = "-> ",
 		path_display = { "smart" },
@@ -88,10 +87,8 @@ telescope.setup({
 				["<C-t>"] = actions.select_tab,
 
 				["<c-d>"] = require("telescope.actions").delete_buffer,
-
 				-- ["<C-u>"] = actions.preview_scrolling_up,
 				-- ["<C-d>"] = actions.preview_scrolling_down,
-
 				-- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<Tab>"] = actions.close,
 				["<S-Tab>"] = actions.close,
@@ -102,7 +99,6 @@ telescope.setup({
 				["<C-h>"] = actions.which_key, -- keys from pressing <C-h>
 				["<esc>"] = actions.close,
 			},
-
 			n = {
 				["<esc>"] = actions.close,
 				["<CR>"] = actions.select_default,
@@ -111,14 +107,12 @@ telescope.setup({
 				["<C-t>"] = actions.select_tab,
 				["<C-b>"] = actions.results_scrolling_up,
 				["<C-f>"] = actions.results_scrolling_down,
-
 				["<Tab>"] = actions.close,
 				["<S-Tab>"] = actions.close,
 				-- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				-- ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
 				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-
 				["j"] = actions.move_selection_next,
 				["k"] = actions.move_selection_previous,
 				["H"] = actions.move_to_top,
@@ -129,24 +123,19 @@ telescope.setup({
 				["s"] = actions.select_horizontal,
 				["v"] = actions.select_vertical,
 				["t"] = actions.select_tab,
-
 				["<Down>"] = actions.move_selection_next,
 				["<Up>"] = actions.move_selection_previous,
 				["gg"] = actions.move_to_top,
 				["G"] = actions.move_to_bottom,
-
 				["<C-u>"] = actions.preview_scrolling_up,
 				["<C-d>"] = actions.preview_scrolling_down,
-
 				["<PageUp>"] = actions.results_scrolling_up,
 				["<PageDown>"] = actions.results_scrolling_down,
-
 				["?"] = actions.which_key,
 			},
 		},
 	},
 	pickers = {
-
 		live_grep = {
 			theme = "ivy",
 		},
@@ -188,13 +177,9 @@ telescope.setup({
 			theme = "dropdown",
 			initial_mode = "normal",
 		},
-
-		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
 		--   picker_config_key = value,
 		--   ...
 		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
 	},
 })

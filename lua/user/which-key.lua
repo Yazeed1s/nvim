@@ -5,48 +5,42 @@ end
 
 local setup = {
 	plugins = {
-		marks = true, -- shows a list of your marks on ' and `
-		registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+		marks = true,
+		registers = true,
 		spelling = {
-			enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-			suggestions = 20, -- how many suggestions should be shown in the list?
+			enabled = true,
+			suggestions = 20,
 		},
-		-- the presets plugin, adds help for a bunch of default keybindings in Neovim
-		-- No actual key bindings are created
 		presets = {
-			operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-			motions = false, -- adds help for motions
-			text_objects = false, -- help for text objects triggered after entering an operator
-			windows = true, -- default bindings on <c-w>
-			nav = true, -- misc bindings to work with windows
-			z = true, -- bindings for folds, spelling and others prefixed with z
-			g = true, -- bindings for prefixed with g
+			operators = false,
+			motions = false,
+			text_objects = false,
+			windows = true,
+			nav = true,
+			z = true,
+			g = true,
 		},
 	},
-	-- add operators that will trigger motion and text object completion
-	-- to enable all native operators, set the preset / operators plugin above
 	-- operators = { gc = "Comments" },
 	key_labels = {
-		-- override the label used to display some keys. It doesn't effect WK in any other way.
-		-- For example:
 		-- ["<space>"] = "SPC",
 		["<leader>"] = "SPC",
 		-- ["<cr>"] = "RET",
 		-- ["<tab>"] = "TAB",
 	},
 	icons = {
-		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-		separator = "➜", -- symbol used between a key and it's label
-		group = "+", -- symbol prepended to a group
+		breadcrumb = "»",
+		separator = "➜",
+		group = "+",
 	},
 	popup_mappings = {
-		scroll_down = "<c-d>", -- binding to scroll down inside the popup
-		scroll_up = "<c-u>", -- binding to scroll up inside the popup
+		scroll_down = "<c-d>",
+		scroll_up = "<c-u>",
 	},
 	window = {
-		border = "rounded", -- none, single, double, shadow
+		border = "single", -- none, single, double, shadow
 		position = "bottom", -- bottom, top
-		margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+		margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
 		padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
 		winblend = 0,
 	},
@@ -56,36 +50,33 @@ local setup = {
 		spacing = 3, -- spacing between columns
 		align = "center", -- align columns left, center or right
 	},
-	ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-	hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-	show_help = false, -- show help message on the command line when the popup is visible
-	-- triggers = "auto", -- automatically setup triggers
-	-- triggers = {"<leader>"} -- or specify a list manually
+	ignore_missing = true,
+	hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
+	show_help = false,
+	-- triggers = "auto",
+	-- triggers = {"<leader>"},
 	triggers_blacklist = {
-		-- list of mode / prefixes that should never be hooked by WhichKey
-		-- this is mostly relevant for key maps that start with a native binding
-		-- most people should not need to change this
 		i = { "j", "k" },
 		v = { "j", "k" },
 	},
 }
 
 local opts = {
-	mode = "n", -- NORMAL mode
+	mode = "n",
 	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
+	buffer = nil,
+	silent = true,
+	noremap = true,
+	nowait = true,
 }
 
 local m_opts = {
-	mode = "n", -- NORMAL mode
+	mode = "n",
 	prefix = "m",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
+	buffer = nil,
+	silent = true,
+	noremap = true,
+	nowait = true,
 }
 
 local mappings = {
@@ -100,7 +91,6 @@ local mappings = {
 	["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
 	-- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	c = { "<cmd>bdelete<CR>", "Close Buffer" },
-
 	-- :lua require'lir.float'.toggle()
 	-- ["f"] = {
 	--   "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -120,13 +110,11 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
-
 	s = {
 		name = "Split",
 		s = { "<cmd>split<cr>", "HSplit" },
 		v = { "<cmd>vsplit<cr>", "VSplit" },
 	},
-
 	x = {
 		name = "Troubles",
 		t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
@@ -138,13 +126,11 @@ local mappings = {
 		q = { "<cmd>TroubleToggle quickfix<cr>", "Trouble toggle quick fix" },
 		-- r = { "<cmd>TroubleToggle lsp_references<cr>", "Trouble toggle ref" },
 	},
-
 	-- nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
 	-- nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
 	-- require("dapui").open()
 	-- require("dapui").close()
 	-- require("dapui").toggle()
-
 	f = {
 		name = "Find",
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -161,7 +147,6 @@ local mappings = {
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
 	},
-
 	g = {
 		name = "Git",
 		g = { "<cmd>:LazyGit<CR>", "Lazygit" },
@@ -184,7 +169,6 @@ local mappings = {
 			"Diff",
 		},
 	},
-
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -219,7 +203,6 @@ local mappings = {
 			"Workspace Symbols",
 		},
 	},
-
 	-- s = {
 	--   name = "Surround",
 	--   ["."] = { "<cmd>lua require('surround').repeat_last()<cr>", "Repeat" },
@@ -229,14 +212,12 @@ local mappings = {
 	--   q = { "<cmd>lua require('surround').toggle_quotes()<cr>", "Quotes" },
 	--   b = { "<cmd>lua require('surround').toggle_brackets()<cr>", "Brackets" },
 	-- },
-
 	-- T = {
 	-- 	name = "Treesitter",
 	-- 	h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
 	-- 	p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
 	-- 	r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
 	-- },
-
 	-- z = {
 	--   name = "Zen",
 	--   z = { "<cmd>TZAtaraxis<cr>", "Zen" },
@@ -247,12 +228,12 @@ local mappings = {
 }
 
 local vopts = {
-	mode = "v", -- VISUAL mode
+	mode = "v",
 	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
+	buffer = nil,
+	silent = true,
+	noremap = true,
+	nowait = true,
 }
 local vmappings = {
 	["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },

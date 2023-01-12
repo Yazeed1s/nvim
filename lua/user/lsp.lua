@@ -17,21 +17,17 @@ local enable_format_on_save = function(_, bufnr)
 	})
 end
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 -- local on_attach = function(client, bufnr)
 -- 	local function buf_set_keymap(...)
 -- 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 -- 	end
 --
--- 	--Enable completion triggered by <c-x><c-o>
 -- 	--local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 -- 	--buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 --
 -- 	-- Mappings.
 -- 	local opts = { noremap = true, silent = true }
 --
--- 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 -- 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 -- 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 -- 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
@@ -80,7 +76,6 @@ protocol.CompletionItemKind = {
 	"", -- TypeParameter
 }
 
--- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -90,11 +85,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	severity_sort = true,
 })
 
--- Show line diagnostics automatically in hover window
 vim.o.updatetime = 250
 vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
--- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = ">>", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
@@ -115,14 +108,8 @@ vim.diagnostic.config({
 -- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 -- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 -- vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -144,7 +131,6 @@ local on_attach = function(client, bufnr)
 end
 
 local lsp_flags = {
-	-- This is the default in Nvim 0.7+
 	debounce_text_changes = 150,
 }
 require("lspconfig")["pyright"].setup({
@@ -164,7 +150,6 @@ require("lspconfig")["tsserver"].setup({
 require("lspconfig")["rust_analyzer"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
-	-- Server-specific settings...
 	settings = {
 		["rust-analyzer"] = {},
 	},
@@ -220,17 +205,13 @@ require("lspconfig").sumneko_lua.setup({
 	settings = {
 		Lua = {
 			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = "LuaJIT",
-				-- Setup your lua path
 				path = vim.split(package.path, ";"),
 			},
 			diagnostics = {
-				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
 			},
 			workspace = {
-				-- Make the server aware of Neovim runtime files
 				library = {
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,

@@ -1,9 +1,9 @@
 local status_ok, symbols_outline = pcall(require, "symbols-outline")
 if not status_ok then
-  return
+	return
 end
 
-local icons = require "user.icons"
+local icons = require("user.icons")
 local opts = {
 	highlight_hovered_item = true,
 	show_guides = true,
@@ -13,7 +13,7 @@ local opts = {
 	show_numbers = false,
 	show_relative_numbers = false,
 	show_symbol_details = true,
-	keymaps = { -- These keymaps can be a string or a table for multiple keys
+	keymaps = {
 		close = { "<Esc>", "q" },
 		goto_location = "<Cr>",
 		focus_location = "o",

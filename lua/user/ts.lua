@@ -7,21 +7,21 @@ end
 -- ft_to_parser.motoko = "typescript"
 
 configs.setup({
-	ensure_installed = { "go", "c", "lua", "rust", "bash", "vim" }, -- one of "all" or a list of languages
-	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-	ignore_install = { "" }, -- List of parsers to ignore installing
+	ensure_installed = { "go", "c", "lua", "rust", "bash", "vim" },
+	sync_install = false,
+	ignore_install = { "" },
 	matchup = {
-		enable = true, -- mandatory, false will disable the whole extension
+		enable = true,
 		disable_virtual_text = true,
-		disable = { "html" }, -- optional, list of language that will be disabled
+		disable = { "html" },
 		-- include_match_words = false
 	},
 	highlight = {
 		-- use_languagetree = true,
-		enable = true, -- false will disable the whole extension
-		-- disable = { "css", "html" }, -- list of language that will be disabled
-		-- disable = { "css", "markdown" }, -- list of language that will be disabled
-		disable = { "markdown" }, -- list of language that will be disabled
+		enable = true,
+		-- disable = { "css", "html" },
+		-- disable = { "css", "markdown" },
+		disable = { "markdown" },
 		-- additional_vim_regex_highlighting = true,
 	},
 	autopairs = {
@@ -46,10 +46,8 @@ configs.setup({
 	textobjects = {
 		select = {
 			enable = true,
-			-- Automatically jump forward to textobj, similar to targets.vim
 			lookahead = true,
 			keymaps = {
-				-- You can use the capture groups defined in textobjects.scm
 				["af"] = "@function.outer",
 				["if"] = "@function.inner",
 				["at"] = "@class.outer",
@@ -76,7 +74,7 @@ configs.setup({
 		},
 		move = {
 			enable = true,
-			set_jumps = true, -- whether to set jumps in the jumplist
+			set_jumps = true,
 			goto_next_start = {
 				["]m"] = "@function.outer",
 				["]]"] = "@class.outer",
