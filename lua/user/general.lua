@@ -9,7 +9,7 @@ vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based fold
 vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true -- ignore case in search patterns
--- vim.opt.mouse = "a" -- allow the mouse to be used in neovim
+vim.opt.mouse = "" -- allow the mouse to be used in neovim
 vim.opt.smartcase = true -- smart case
 vim.opt.smartindent = true -- make indenting smarter again
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
@@ -17,7 +17,7 @@ vim.opt.splitright = true -- force all vertical splits to go to the right of cur
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 -- vim.o.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 100 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 200 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.title = true -- set the title of window to the value of the titlestring
 vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
 vim.opt.updatetime = 300 -- faster completion
@@ -35,6 +35,14 @@ vim.opt.syntax = "on"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.g.mapleader = " "
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
+vim.cmd([[
+" Disable all blinking:
+:set guicursor+=a:blinkon0
+" Remove previous setting:
+:set guicursor-=a:blinkon0
+" Restore default setting:
+:set guicursor&
+]])

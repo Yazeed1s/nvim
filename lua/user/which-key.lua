@@ -90,16 +90,16 @@ local m_opts = {
 
 local mappings = {
 	-- ["1"] = "which_key_ignore",
-	a = { "<cmd>:CodeActionMenu<cr>", "Action" },
+	-- a = { "<cmd>:CodeActionMenu<cr>", "Code Action" },
 	b = { "<cmd>Telescope buffers<cr>", "Buffers" },
 	-- e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	v = { "<cmd>vsplit<cr>", "vsplit" },
-	h = { "<cmd>split<cr>", "split" },
+	-- v = { "<cmd>vsplit<cr>", "vsplit" },
+	-- h = { "<cmd>split<cr>", "split" },
 	-- h = { "<cmd>nohlsearch<CR>", "No HL" },
 	-- q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
 	["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
 	-- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-	c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+	c = { "<cmd>bdelete<CR>", "Close Buffer" },
 
 	-- :lua require'lir.float'.toggle()
 	-- ["f"] = {
@@ -121,11 +121,23 @@ local mappings = {
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
 
-	-- s = {
-	--   name = "Split",
-	--   s = { "<cmd>split<cr>", "HSplit" },
-	--   v = { "<cmd>vsplit<cr>", "VSplit" },
-	-- },
+	s = {
+		name = "Split",
+		s = { "<cmd>split<cr>", "HSplit" },
+		v = { "<cmd>vsplit<cr>", "VSplit" },
+	},
+
+	x = {
+		name = "Troubles",
+		t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
+		c = { "<cmd>TroubleClose<cr>", "Trouble close" },
+		r = { "<cmd>TroubleRefresh<cr>", "Trouble refresh" },
+		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Trouble toggle ws" },
+		d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble toggle dd" },
+		-- l = { "<cmd>TroubleToggle loclist<cr>", "Trouble toggle loclist" },
+		q = { "<cmd>TroubleToggle quickfix<cr>", "Trouble toggle quick fix" },
+		-- r = { "<cmd>TroubleToggle lsp_references<cr>", "Trouble toggle ref" },
+	},
 
 	-- nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
 	-- nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
@@ -218,12 +230,12 @@ local mappings = {
 	--   b = { "<cmd>lua require('surround').toggle_brackets()<cr>", "Brackets" },
 	-- },
 
-	T = {
-		name = "Treesitter",
-		h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
-		p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-		r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
-	},
+	-- T = {
+	-- 	name = "Treesitter",
+	-- 	h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
+	-- 	p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
+	-- 	r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
+	-- },
 
 	-- z = {
 	--   name = "Zen",

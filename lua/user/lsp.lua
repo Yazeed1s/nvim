@@ -19,38 +19,38 @@ end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-
-	--Enable completion triggered by <c-x><c-o>
-	--local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-	--buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-	-- Mappings.
-	local opts = { noremap = true, silent = true }
-
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "gk", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_create_autocmd("CursorHold", {
-		buffer = bufnr,
-		callback = function()
-			local opts_ = {
-				focusable = false,
-				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = "rounded",
-				source = "always",
-				prefix = " ",
-				scope = "cursor",
-			}
-			vim.diagnostic.open_float(nil, opts_)
-		end,
-	})
-end
+-- local on_attach = function(client, bufnr)
+-- 	local function buf_set_keymap(...)
+-- 		vim.api.nvim_buf_set_keymap(bufnr, ...)
+-- 	end
+--
+-- 	--Enable completion triggered by <c-x><c-o>
+-- 	--local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+-- 	--buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+--
+-- 	-- Mappings.
+-- 	local opts = { noremap = true, silent = true }
+--
+-- 	-- See `:help vim.lsp.*` for documentation on any of the below functions
+-- 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+-- 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+-- 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+-- 	buf_set_keymap("n", "gk", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+-- 	vim.api.nvim_create_autocmd("CursorHold", {
+-- 		buffer = bufnr,
+-- 		callback = function()
+-- 			local opts_ = {
+-- 				focusable = false,
+-- 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+-- 				border = "rounded",
+-- 				source = "always",
+-- 				prefix = " ",
+-- 				scope = "cursor",
+-- 			}
+-- 			vim.diagnostic.open_float(nil, opts_)
+-- 		end,
+-- 	})
+-- end
 
 protocol.CompletionItemKind = {
 	"", -- Text
@@ -110,7 +110,11 @@ vim.diagnostic.config({
 		source = "always", -- Or "if_many"
 	},
 })
-
+-- local opts = { noremap = true, silent = true }
+-- vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+-- vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -132,7 +136,7 @@ local on_attach = function(client, bufnr)
 	end, bufopts)
 	vim.keymap.set("n", "td", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "rn", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "ca", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", function()
 		vim.lsp.buf.format({ async = true })
@@ -234,4 +238,14 @@ require("lspconfig").sumneko_lua.setup({
 			},
 		},
 	},
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "sh",
+	callback = function()
+		vim.lsp.start({
+			name = "bash-language-server",
+			cmd = { "bash-language-server", "start" },
+		})
+	end,
 })

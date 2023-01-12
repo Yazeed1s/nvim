@@ -8,10 +8,10 @@ if not snip_status_ok then
 	return
 end
 
-local tabnine_status_ok, _ = pcall(require, "user.tabnine")
-if not tabnine_status_ok then
-	return
-end
+-- local tabnine_status_ok, _ = pcall(require, "user.tabnine")
+-- if not tabnine_status_ok then
+-- 	return
+-- end
 
 local buffer_fts = {
 	"markdown",
@@ -175,37 +175,6 @@ cmp.setup({
 	sources = {
 		{ name = "crates", group_index = 1 },
 		{
-			name = "copilot",
-			-- keyword_length = 0,
-			max_item_count = 3,
-			trigger_characters = {
-				{
-					".",
-					":",
-					"(",
-					"'",
-					'"',
-					"[",
-					",",
-					"#",
-					"*",
-					"@",
-					"|",
-					"=",
-					"-",
-					"{",
-					"/",
-					"\\",
-					"+",
-					"?",
-					" ",
-					-- "\t",
-					-- "\n",
-				},
-			},
-			group_index = 2,
-		},
-		{
 			name = "nvim_lsp",
 			filter = function(entry, ctx)
 				local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
@@ -230,7 +199,7 @@ cmp.setup({
 				end
 			end,
 		},
-		{ name = "cmp_tabnine", group_index = 2 },
+		-- { name = "cmp_tabnine", group_index = 2 },
 		{ name = "path", group_index = 2 },
 		{ name = "emoji", group_index = 2 },
 		{ name = "lab.quick_data", keyword_length = 4, group_index = 2 },

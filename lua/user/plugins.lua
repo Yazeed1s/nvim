@@ -39,101 +39,17 @@ packer.init({
 return packer.startup(function(use)
 	-- Plugin Mangager
 	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use({ "ellisonleao/gruvbox.nvim" })
-	use("Yazeed1s/minimal.nvim")
-	-- use("chriskempson/base16-vim")
-	use("RRethy/nvim-base16")
-	use("sainnhe/everforest")
-	use("sainnhe/gruvbox-material")
-	use("kyazdani42/nvim-web-devicons")
-	use("ackyshake/Spacegray.vim")
+	-- Go useful cmds
 	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+		"ray-x/go.nvim",
 		config = function()
-			require("telescope").load_extension("lazygit")
+			require("go").setup()
 		end,
 	})
-	-- Dashboard Init
-	use({
-		"simrat39/rust-tools.nvim",
-		config = function()
-			local lsp_installer_servers = require("nvim-lsp-installer.servers")
-			local _, requested_server = lsp_installer_servers.get_server("rust_analyzer")
-			require("rust-tools").setup({
-				tools = { autoSetHints = true, hover_with_actions = true, runnables = { use_telescope = true } },
-				server = {
-					cmd_env = requested_server._default_options.cmd_env,
-					on_attach = require("nvim.lsp").common_on_attach,
-					on_init = require("nvim.lsp").common_on_init,
-				},
-				-- options same as lsp hover / vim.lsp.util.open_floating_preview()
-				hover_actions = {
-					-- the border that is used for the hover window
-					-- see vim.api.nvim_open_win()
-					border = {
-						{ "╭", "FloatBorder" },
-						{ "─", "FloatBorder" },
-						{ "╮", "FloatBorder" },
-						{ "│", "FloatBorder" },
-						{ "╯", "FloatBorder" },
-						{ "─", "FloatBorder" },
-						{ "╰", "FloatBorder" },
-						{ "│", "FloatBorder" },
-					},
-					-- whether the hover action window gets automatically focused
-					-- default: false
-					auto_focus = false,
-				},
-			})
-		end,
-		ft = { "rust", "rs" },
-	})
-	-- use({
-	-- 	"nguyenvukhang/nvim-toggler",
-	-- 	require("nvim-toggler").setup({
-	-- 		-- your own inverses
-	-- 		inverses = { ["true"] = "false", ["false"] = "true", ["!="] = "==", ["=="] = "!=" },
-	-- 		-- removes the default <leader>i keymap
-	-- 		-- vim.keymap.set({ "n", "v" }, "cl", require("nvim-toggler").toggle),
-	-- 		remove_default_keybinds = false,
-	-- 	}),
-	-- })
-	use("p00f/clangd_extensions.nvim")
-	-- Comment
-	use("numToStr/Comment.nvim")
-	-- Quickfix
-	-- use "RRethy/nvim-base16"
-	use({
-		"kevinhwang91/nvim-bqf",
-		event = { "BufRead", "BufNew" },
-		config = function()
-			require("bqf").setup({
-				auto_enable = true,
-				preview = {
-					win_height = 12,
-					win_vheight = 12,
-					delay_syntax = 80,
-					border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
-				},
-				func_map = { vsplit = "", ptogglemode = "z,", stoggleup = "" },
-				filter = {
-					fzf = {
-						action_for = { ["ctrl-s"] = "split", ["q"] = "quit" },
-						extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
-					},
-				},
-			})
-		end,
-	})
-	-- using packer.nvim
-	use({ "akinsho/bufferline.nvim", requires = "nvim-tree/nvim-web-devicons" })
-	-- colorscheme
-	use("Yazeed1s/oh-lucy.nvim")
+	-- use("ray-x/guihua.lua")
+	-- use("kyazdani42/nvim-web-devicons")
+
+	-- Lua
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -142,52 +58,96 @@ return packer.startup(function(use)
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
+				position = "bottom", -- position of the list can be: bottom, top, left, right
+				height = 7, -- height of the trouble list when position is top or bottom
+				width = 50, -- width of the list when position is left or right
+				icons = true, -- use devicons for filenames
+				mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+				fold_open = "", -- icon used for open folds
+				fold_closed = "", -- icon used for closed folds
+				group = true, -- group results by file
+				padding = true, -- add an extra new line on top of the list
+				action_keys = { -- key mappings for actions in the trouble list
+					-- map to {} to remove a mapping, for example:
+					-- close = {},
+					close = "q", -- close the list
+					cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+					refresh = "r", -- manually refresh
+					jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
+					open_split = { "<c-x>" }, -- open buffer in new split
+					open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+					open_tab = { "<c-t>" }, -- open buffer in new tab
+					jump_close = { "o" }, -- jump to the diagnostic and close the list
+					toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+					toggle_preview = "P", -- toggle auto_preview
+					hover = "K", -- opens a small popup with the full multiline message
+					preview = "p", -- preview the diagnostic location
+					close_folds = { "zM", "zm" }, -- close all folds
+					open_folds = { "zR", "zr" }, -- open all folds
+					toggle_fold = { "zA", "za" }, -- toggle fold of current file
+					previous = "k", -- previous item
+					next = "j", -- next item
+				},
+				indent_lines = true, -- add an indent guide below the fold icons
+				auto_open = false, -- automatically open the list when you have diagnostics
+				auto_close = false, -- automatically close the list when you have no diagnostics
+				auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+				auto_fold = false, -- automatically fold a file trouble list at creation
+				auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
+				signs = {
+					-- icons / text used for a diagnostic
+					error = "",
+					warning = "",
+					hint = "",
+					information = "",
+					other = "﫠",
+				},
+				use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
 			})
 		end,
 	})
-	-- telescope
+	-- status line (disabled for now)
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+	-- telescope -> file & text seraching
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
-		-- or                            , branch = '0.1.x',
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
 	})
-	-- syntax
+	-- Comment
+	use("numToStr/Comment.nvim")
+	-- Quickfix
+	use({ "akinsho/bufferline.nvim", requires = "nvim-tree/nvim-web-devicons" })
+	-- colorscheme
+	use("Yazeed1s/oh-lucy.nvim")
+	use("sainnhe/everforest")
+	use("sainnhe/gruvbox-material")
+
 	-- Syntax/Treesitter
-	use("nvim-treesitter/nvim-treesitter")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
-	use("nvim-treesitter/playground")
-	use("windwp/nvim-ts-autotag")
-	use("nvim-treesitter/nvim-treesitter-textobjects")
-	-- use "wellle/targets.vim"
-	-- use "RRethy/nvim-treesitter-textsubjects"
+	use("nvim-treesitter/nvim-treesitter", "nvim-treesitter/playground")
+	-- use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("windwp/nvim-autopairs")
-	use({ "abecodes/tabout.nvim", requires = { "nvim-treesitter" } })
+	-- indent lines
 	use("lukas-reineke/indent-blankline.nvim")
 	-- file manager
-	use({
-		"nvim-tree/nvim-tree.lua",
-		requires = {
-			"nvim-tree/nvim-web-devicons", -- optional, for file icons
-		},
-	})
+	-- use({
+	-- 	"nvim-tree/nvim-tree.lua",
+	-- 	requires = {
+	-- 		"nvim-tree/nvim-web-devicons", -- optional, for file icons
+	-- 	},
+	-- })
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
-	-- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("ray-x/lsp_signature.nvim")
-	use("SmiteshP/nvim-navic")
+	-- use("SmiteshP/nvim-navic")
 	use("simrat39/symbols-outline.nvim")
-	use("b0o/SchemaStore.nvim")
-	-- use({
-	-- 	"goolord/alpha-nvim",
-	-- 	config = function()
-	-- 		require("alpha").setup(require("alpha.themes.startify").config)
-	-- 	end,
-	-- })
+
 	-- hints
 	use("lvimuser/lsp-inlayhints.nvim")
 	--
@@ -209,18 +169,17 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-emoji")
 	use("hrsh7th/cmp-nvim-lua")
-	-- use({ "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e", run = "./install.sh" })
 
 	-- git
-	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
-	use("f-person/git-blame.nvim")
+	-- use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	-- use("f-person/git-blame.nvim")
 
-	-- Keybinding
+	-- Key table
 	use("folke/which-key.nvim")
-	use({ "weilbith/nvim-code-action-menu" })
 	-- Snippet
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

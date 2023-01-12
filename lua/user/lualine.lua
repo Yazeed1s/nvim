@@ -15,6 +15,44 @@ custom_16.visual.b.bg = "#1A191E"
 custom_16.insert.b.fg = "#695F69"
 custom_16.visual.b.fg = "#695F69"
 custom_16.insert.a.bg = "#A896BE"
+-- +-------------------------------------------------+
+-- | A | B | C                             X | Y | Z |
+-- +-------------------------------------------------+
+-- insert -> insert mode, normal -> normal mode, visual -> visual mode
+local custom = require("lualine.themes.gruvbox")
+-- custom.normal.c.bg = "none"
+-- custom.insert.c.bg = "none"
+-- custom.visual.c.bg = "none"
+-- custom.insert.c.fg = "#928374"
+-- custom.normal.c.fg = "#928374"
+-- custom.visual.c.fg = "#928374"
+-- custom.insert.b.bg = "none"
+-- custom.normal.b.bg = "none"
+-- custom.visual.b.bg = "none"
+-- custom.insert.b.fg = "#ea6962"
+-- custom.normal.b.fg = "#ea6962"
+-- custom.normal.a.bg = "none"
+-- custom.normal.a.fg = "#d5c4a1"
+-- custom.visual.b.fg = "#ea6962"
+-- custom.insert.a.fg = "#83a598"
+-- custom.visual.a.fg = "#d3869b"
+-- custom.insert.a.bg = "none"
+-- custom.visual.a.bg = "none"
+
+custom.normal.c.bg = "#282828"
+custom.insert.c.bg = "#282828"
+custom.visual.c.bg = "#282828"
+custom.insert.c.fg = "#928374"
+custom.normal.c.fg = "#928374"
+custom.visual.c.fg = "#928374"
+custom.insert.b.bg = "#3c3836"
+custom.normal.b.bg = "#3c3836"
+custom.visual.b.bg = "#3c3836"
+custom.insert.b.fg = "#a89984"
+custom.normal.b.fg = "#a89984"
+custom.visual.b.fg = "#a89984"
+custom.insert.a.bg = "#83a598"
+custom.visual.a.bg = "#d3869b"
 
 require("lualine").setup({
 
@@ -22,9 +60,9 @@ require("lualine").setup({
 		icons_enabled = true,
 		-- theme = custom_16,
 		-- thene = "everforest",
-		theme = "gruvbox",
+		theme = custom,
 		-- theme = "base16",
-		component_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {
 			statusline = {},
